@@ -2,7 +2,7 @@
 <div class="content">
   <div class="cards-content">
     <mat-button-toggle-group  #group="matButtonToggleGroup" name="foodType" value="ALL" (change)="filterCategoryOption(group.value)">
-        <mat-button-toggle class="button"  value="ALL" >All</mat-button-toggle>
+        <mat-button-toggle class="button" (click)="this.getAllProducts()"  >All</mat-button-toggle>
         <mat-button-toggle class="button"*ngFor="let category of categories" value="{{category.name}}">{{category.name}}</mat-button-toggle>
 
 
@@ -14,7 +14,9 @@
   <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of dataSource" class="test" >
 
     <mat-card class="mat-elevation-z4 product-card">
-      <img mat-card-image src="https://nilebucket.s3.eu-central-1.amazonaws.com/{{product.fileName}}"/>
+     <!-- <img mat-card-image src="https://nilebucket.s3.eu-central-1.amazonaws.com/{{product.fileName}}"/>-->
+           <img mat-card-image src="https://png.pngtree.com/png-clipart/20190705/original/pngtree-layered-red-wine-glass-png-image_4364805.jpg"/>
+
       <mat-divider></mat-divider>
       <mat-card-content>
         <div class="large-text">{{product.name}}</div>
