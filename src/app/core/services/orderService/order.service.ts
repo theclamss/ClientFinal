@@ -15,13 +15,16 @@ export class OrderService {
   headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   placeOrder(data: FormData){
+
     let order;
     order = data;
+
+    console.log(data);
 
     this.http.post(URL, order).subscribe(result => console.log(result+"tststs"));
   }
   updateOrder(id, order: Order){
-    this.http.put(URL + `/update/${id}`, order, {headers: this.headers}).subscribe(result => console.log(result));
+    this.http.put(URL + `/${id}`, order, {headers: this.headers}).subscribe(result => console.log("lalalal"+result));
   }
   findOrders(): Observable<Order[]>{
     return this.http.get<Order[]>(URL);

@@ -29,7 +29,7 @@
   <div *ngIf="orders.selectedOptions.selected[0]?.value.order !== null">
 
     
-      <mat-card class="mat-elevation-z4" *ngIf="orders.selectedOptions.selected[0]?.value.orderType === 'WAITING'">
+      <mat-card class="mat-elevation-z4" *ngIf="this.selectedOrder[0].status === 'WAITING'">
 
         <mat-card-title>
           Order is waiting for acceptation
@@ -58,6 +58,8 @@
         <span>{{this.userOfOrder.address.city}}</span>
         <span><h2>Street: </h2></span>
         <span>{{this.userOfOrder.address.street}} </span>
+        <span><h2>Mail: </h2></span>
+        <span>{{this.userOfOrder.email}} </span>
       </mat-card-content>
 
       </mat-card>

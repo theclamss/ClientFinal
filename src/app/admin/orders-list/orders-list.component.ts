@@ -43,6 +43,7 @@ export class OrdersListComponent implements OnInit {
         if (this.deliveryTimeInMinutes > 0){
           order.deliveryDate = new Date();
           order.deliveryDate.setMinutes(order.deliveryDate.getMinutes() + this.deliveryTimeInMinutes);
+          order.status="ACCEPTED";
 
 
           
@@ -72,9 +73,9 @@ export class OrdersListComponent implements OnInit {
     
    
     
-    console.log(this.ordersList);
+    console.log(this.selectedOrder[0].status);
 
 
-    console.log(this.userOfOrder.address.street);
+    console.log(this.userOfOrder.email);
    }
 }
