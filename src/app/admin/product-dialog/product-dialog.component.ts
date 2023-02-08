@@ -4,6 +4,7 @@ import {Product} from '../../core/model/product';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ProductService} from '../../core/services/productService/product.service';
 import {Category} from '../../core/model/category';
+import {CategoryService} from '../../core/services/categoryService/category.service';
 
 @Component({
   selector: 'app-product-dialog',
@@ -17,8 +18,9 @@ export class ProductDialogComponent implements OnInit {
   currentFileUpload: File;
   alreadyExists: boolean;
   public category: Category;
+  categories: Category[];
 
-  constructor(private dialogRef: MatDialogRef<ProductDialogComponent>,
+  constructor( public categoryService: CategoryService,private dialogRef: MatDialogRef<ProductDialogComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any,
               private productService: ProductService, private formBuilder: FormBuilder) {
     this.product = data.product;
@@ -26,6 +28,9 @@ export class ProductDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.getCategories();
+
     this.productForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
@@ -36,6 +41,11 @@ export class ProductDialogComponent implements OnInit {
     this.productForm.get('description').setValue(this.product?.description);
     this.productForm.get('price').setValue(this.product?.price);
     this.productForm.get('fileName').setValue(this.product?.fileName);
+    this.productForm.get('category').setValue(this.product?.category);
+    
+  }
+  getCategories(): void{
+    this.categoryService.findAllCategories().subscribe(data => this.categories = data);
   }
 
 
