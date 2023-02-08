@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar-nav',
@@ -16,6 +17,11 @@ export class SideBarNavComponent {
       shareReplay()
     );
   isExpanded = false;
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,private router: Router) {}
+
+
+  redirectToHomeMenu() {
+    this.router.navigateByUrl('/home/menu');
+  }
 
 }

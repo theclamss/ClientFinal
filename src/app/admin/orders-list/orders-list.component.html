@@ -53,14 +53,20 @@
           Delivery information
         </mat-card-title>
         <mat-divider></mat-divider>
-      <mat-card-content>
-        <span><h2>City:</h2></span>
-        <span>{{this.userOfOrder.address.city}}</span>
-        <span><h2>Street: </h2></span>
-        <span>{{this.userOfOrder.address.street}} </span>
-        <span><h2>Mail: </h2></span>
-        <span>{{this.userOfOrder.email}} </span>
-      </mat-card-content>
+        <mat-card-content>
+          <span><h2>City:</h2></span>
+          <span>{{this.userOfOrder.address.city}}</span>
+          <span><h2>Street: </h2></span>
+          <span>{{this.userOfOrder.address.street}} </span>
+          <span><h2>Mail: </h2></span>
+          <span>{{this.userOfOrder.email}} </span>
+          <span *ngIf="this.selectedOrder[0].deliveryDate <currentdate ">
+            <mat-icon class="delivered">check_circle</mat-icon>
+          </span>
+          <span *ngIf="this.selectedOrder[0].deliveryDate >= currentdate">
+            <mat-icon class="waiting">access_time</mat-icon>
+          </span>
+        </mat-card-content>
 
       </mat-card>
       <mat-card class="mat-elevation-z4 order-info">

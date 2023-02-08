@@ -13,6 +13,8 @@ import {OrdersListComponent} from '../admin/orders-list/orders-list.component';
 import {UserPanelComponent} from '../user-panel/user-panel.component';
 import {CategoriesComponent} from '../admin/categories/categories.component';
 import {WelcomeComponent} from '../welcome/welcome.component';
+import {ProductDetailsComponent} from '../shopping/product-details/product-details.component';
+
 
 
 
@@ -28,6 +30,7 @@ children: [
 {path: 'correctRegistration', component: CorrectRegistrationComponent},
 {path: 'menu', component: ClientMenuComponent},
 {path: 'checkout', component: CheckoutComponent},
+{path: 'details/:id', component: ProductDetailsComponent },
 {path: 'userDashboard', component: UserPanelComponent}]},
 {path: 'admin', component: DashboardComponent,
 canActivate: [RoleGuardService],

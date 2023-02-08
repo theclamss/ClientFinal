@@ -24,6 +24,7 @@ export class OrdersListComponent implements OnInit {
   products: OrderProduct[];
   displayedColumns: string[] = [ 'name', 'quantity', 'price'];
   userOfOrder:User;
+  currentdate:number;
 
 
   constructor(private orderService: OrderService, private dialog: MatDialog, private orderProductsService: OrderProductsService, private userService: UserService) {
@@ -56,6 +57,8 @@ export class OrdersListComponent implements OnInit {
   reject(order: Order): void{
     order.totalPrice = 0;
     this.orderService.updateOrder(order.id, order);
+
+    order.status="REJECTED";
   }
 
     getSortOrders(){
@@ -71,11 +74,13 @@ export class OrdersListComponent implements OnInit {
     
 
     
-   
+   this.currentdate=new Date().getDate();
     
-    console.log(this.selectedOrder[0].status);
+    console.log("date de livraison" +this.selectedOrder[0].deliveryDate);
+    console.log("date mnt" +new Date().getMilliseconds());
 
 
     console.log(this.userOfOrder.email);
+    
    }
 }

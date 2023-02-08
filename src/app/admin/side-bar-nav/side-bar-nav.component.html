@@ -1,4 +1,3 @@
-
 <mat-drawer-container class="sidenav-container" autosize>
   <mat-drawer mode="side" disableClose="true" opened="true">
     <mat-nav-list>
@@ -6,7 +5,7 @@
         <mat-icon (click)="isExpanded = !isExpanded" mat-list-icon>menu</mat-icon>
         <h4 mat-line *ngIf="isExpanded"></h4>
       </mat-list-item>
-        <!-- <mat-list-item>
+      <!-- <mat-list-item>
         <mat-icon mat-list-icon routerLink="dashboard" routerLinkActive="active-icon">dashboard</mat-icon>
         <h4 mat-line *ngIf="isExpanded">Dashboard</h4>
       </mat-list-item>-->
@@ -22,6 +21,10 @@
       <mat-list-item>
         <mat-icon mat-list-icon routerLink="categories" routerLinkActive="active-icon">category</mat-icon>
         <h4 mat-line *ngIf="isExpanded">Categories</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon (click)="redirectToHomeMenu()">home</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Home/Menu</h4>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>

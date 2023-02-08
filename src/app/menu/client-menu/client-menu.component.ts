@@ -5,6 +5,8 @@ import {CartService} from '../../core/services/cartService/cart.service';
 import {Category} from '../../core/model/category';
 import {CategoryService} from '../../core/services/categoryService/category.service';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-client-menu',
   templateUrl: './client-menu.component.html',
@@ -17,7 +19,7 @@ export class ClientMenuComponent implements OnInit{
   dataSource: Product[] = [];
   categories: Category[];
 
-  constructor(public productService: ProductService, private cartService: CartService, private categoryService: CategoryService) {
+  constructor(private router: Router,public productService: ProductService, private cartService: CartService, private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
@@ -38,5 +40,9 @@ export class ClientMenuComponent implements OnInit{
   }
   getAllProducts(): void{
     this.productService.findAllProducts().subscribe(data => this.dataSource = data);
+  }
+
+  showProductDetails(product) {
+    this.router.navigate(['/home/details', product.id], { state: { product } });
   }
 }
