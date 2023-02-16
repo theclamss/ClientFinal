@@ -46,6 +46,8 @@ import {MatButtonToggle, MatButtonToggleModule} from '@angular/material/button-t
 import { ProductDetailsComponent } from './shopping/product-details/product-details.component';
 import { PrestaComponent } from './presta/presta.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+
 
 const appearance: MatFormFieldDefaultOptions = {
   appearance: 'outline'
@@ -77,6 +79,7 @@ const appearance: MatFormFieldDefaultOptions = {
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
+    
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -117,11 +120,13 @@ const appearance: MatFormFieldDefaultOptions = {
   ],
   bootstrap: [AppComponent],
   providers: [
+    
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: appearance
     }
   ],
+  
 
 })
 export class AppModule {}
