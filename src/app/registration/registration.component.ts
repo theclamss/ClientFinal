@@ -5,6 +5,7 @@ import {User} from '../core/model/user';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {Address} from '../core/model/address';
+import {TokenStorageService} from '../core/services/tokenService/token-storage.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -30,13 +31,15 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private builder: FormBuilder) {
     this.registrationForm = this.builder.group({
+      isPrestataire: [false],
       email: ['',  [Validators.required, Validators.email]],
       username: ['', [Validators.required, Validators.minLength(6)]],
       city: ['', [Validators.required, Validators.minLength(4)]],
       street: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: [''],
-    }, {validator: this.checkPasswords });
+      isPresta:['']
+        }, {validator: this.checkPasswords });
   }
 
   ngOnInit(): void {
@@ -56,7 +59,9 @@ export class RegistrationComponent implements OnInit {
       userName : this.registrationForm.controls.username.value,
       email: this.registrationForm.controls.email.value,
       password: this.registrationForm.controls.password.value };
-
+      
+     // isPrestataire: this.registerUser.isPrestataire // get the value of the isPrestataire checkbox
+     const isPresta: any=this.registrationForm.controls.isPresta.value;
       const address: any = {
         city: this.registrationForm.controls.city.value,
         street: this.registrationForm.controls.street.value,
@@ -64,6 +69,10 @@ export class RegistrationComponent implements OnInit {
 
       formData.append('registerUser', JSON.stringify(registerUser));
       formData.append('address', JSON.stringify(address));
+      formData.append('isPresta', JSON.stringify(isPresta));
+
+      
+      
 
       this.authService.register(formData).subscribe(
       data => {

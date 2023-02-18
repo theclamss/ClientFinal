@@ -5,6 +5,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ProductService} from '../../core/services/productService/product.service';
 import {Category} from '../../core/model/category';
 import {CategoryService} from '../../core/services/categoryService/category.service';
+import { User } from 'src/app/core/model/user';
+import {TokenStorageService} from '../../core/services/tokenService/token-storage.service';
 
 @Component({
   selector: 'app-product-dialog',
@@ -20,7 +22,7 @@ export class ProductDialogComponent implements OnInit {
   public category: Category;
   categories: Category[];
 
-  constructor( public categoryService: CategoryService,private dialogRef: MatDialogRef<ProductDialogComponent>,
+  constructor(private tokenStorageService: TokenStorageService,public categoryService: CategoryService,private dialogRef: MatDialogRef<ProductDialogComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any,
               private productService: ProductService, private formBuilder: FormBuilder) {
     this.product = data.product;
@@ -42,6 +44,7 @@ export class ProductDialogComponent implements OnInit {
     this.productForm.get('price').setValue(this.product?.price);
     this.productForm.get('fileName').setValue(this.product?.fileName);
     this.productForm.get('category').setValue(this.product?.category);
+  
     
   }
   getCategories(): void{
@@ -59,7 +62,7 @@ export class ProductDialogComponent implements OnInit {
 
   save() : void{
     const formData = new FormData();
-
+    const user = this.tokenStorageService.getUser();
     const product: any = {
       id: this.product?.id,
       name : this.productForm.controls.name.value,
@@ -74,6 +77,10 @@ export class ProductDialogComponent implements OnInit {
     }
 
     formData.append('product', JSON.stringify(product));
+
+    formData.append('user',JSON.stringify(user));
+    
+    
 
     if (this.currentFileUpload != null){
       formData.append('file', this.currentFileUpload, this.currentFileUpload.name);

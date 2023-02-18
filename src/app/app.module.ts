@@ -79,7 +79,7 @@ const appearance: MatFormFieldDefaultOptions = {
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
-    
+    SocialLoginModule,
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -120,7 +120,19 @@ const appearance: MatFormFieldDefaultOptions = {
   ],
   bootstrap: [AppComponent],
   providers: [
-    
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('YOUR_CLIENT_ID')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
+
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: appearance

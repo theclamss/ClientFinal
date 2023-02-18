@@ -1,5 +1,5 @@
 
-<div class="content">
+<div *ngIf="isLoggedIn == true || roles[0] !== 'ROLE_PRESTA'|| roles.length==0" class="content">
   <div class="cards-content">
     <mat-button-toggle-group  #group="matButtonToggleGroup" name="foodType" value="ALL" (change)="filterCategoryOption(group.value)">
         <mat-button-toggle class="button" (click)="this.getAllProducts()"  >All</mat-button-toggle>
@@ -13,9 +13,9 @@
 
   <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of dataSource" class="test" >
 
-    <mat-card (click)="showProductDetails(product)" class="mat-elevation-z4 product-card">
+    <mat-card  class="mat-elevation-z4 product-card">
      <!-- <img mat-card-image src="https://nilebucket.s3.eu-central-1.amazonaws.com/{{product.fileName}}"/>-->
-           <img mat-card-image src="/assets/{{product.name}}.jpg"/>
+           <img mat-card-image (click)="showProductDetails(product)" src="/assets/{{product.name}}.jpg"/>
 
       <mat-divider></mat-divider>
       <mat-card-content>
@@ -29,5 +29,7 @@
   </div>
 </div>
 </div>
+
+
 <app-cart-button></app-cart-button>
 

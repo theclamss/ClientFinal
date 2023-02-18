@@ -14,6 +14,7 @@ export class ToolbarComponent implements OnInit {
   isLoggedIn = false;
   adminRole = false;
   userRole = false;
+  prestaRole=false;
   email: string;
   routerUrl: string;
 
@@ -32,7 +33,9 @@ export class ToolbarComponent implements OnInit {
 
       this.adminRole = this.roles.includes('ROLE_ADMIN');
       this.userRole = this.roles.includes('ROLE_USER');
-
+      this.prestaRole=this.roles.includes('ROLE_PRESTA');
+      
+      console.log(this.roles);
       this.email = user.email;
     }
   }

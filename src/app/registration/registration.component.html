@@ -68,7 +68,24 @@
             [errorStateMatcher]="matcher">
           <mat-error *ngIf="registrationForm.hasError('notSame')">Passwords do not match</mat-error>
         </mat-form-field>
+
+
+        <mat-form-field>
+          <input
+            autocomplete="off"
+            matInput
+            formControlName="isPresta"
+           
+            type="text"
+            required
+           >
+        
+        </mat-form-field>
+        
+
+        
             </div>
+
           <mat-card-actions>
             <button mat-raised-button primary class="button" (click)="register()">Create account</button>
           </mat-card-actions>
