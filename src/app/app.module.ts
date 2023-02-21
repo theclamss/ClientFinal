@@ -47,6 +47,7 @@ import { ProductDetailsComponent } from './shopping/product-details/product-deta
 import { PrestaComponent } from './presta/presta.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { SideBarNav2Component } from './side-bar-presta/side-bar-presta.component';
 
 
 const appearance: MatFormFieldDefaultOptions = {
@@ -75,7 +76,8 @@ const appearance: MatFormFieldDefaultOptions = {
     CategoryDialogComponent,
     ProductDetailsComponent,
     PrestaComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SideBarNav2Component
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [

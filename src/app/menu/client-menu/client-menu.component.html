@@ -1,5 +1,5 @@
 
-<div *ngIf="isLoggedIn == true || roles[0] !== 'ROLE_PRESTA'|| roles.length==0" class="content">
+<div *ngIf="isLoggedIn == false || roles?.[0] !== 'ROLE_PRESTA'|| roles==null " class="content">
   <div class="cards-content">
     <mat-button-toggle-group  #group="matButtonToggleGroup" name="foodType" value="ALL" (change)="filterCategoryOption(group.value)">
         <mat-button-toggle class="button" (click)="this.getAllProducts()"  >All</mat-button-toggle>
@@ -28,6 +28,9 @@
     </mat-card>
   </div>
 </div>
+</div>
+<div *ngIf="roles?.[0] === 'ROLE_PRESTA' " class="content">
+  <app-side-presta></app-side-presta>
 </div>
 
 

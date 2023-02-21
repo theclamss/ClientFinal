@@ -24,7 +24,7 @@ const routes: Routes = [
 children: [
 
 {path: '', redirectTo: 'menu', pathMatch: 'full'},
-
+{path: 'myproducts', component: RegistrationComponent},
 {path: 'register', component: RegistrationComponent},
 {path: 'login', component: LoginComponent},
 {path: 'correctRegistration', component: CorrectRegistrationComponent},

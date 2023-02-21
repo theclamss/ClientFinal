@@ -35,4 +35,8 @@ export class ProductService {
   deleteProductById(id): Observable<any>{
     return this.http.delete(URL + `/${id}`);
   }
+  findAllproductByUserID(id): Observable<any>{
+    return this.http.get<Product>(URL + `/presta/5?id=${id}`);
+  }
+
 }
