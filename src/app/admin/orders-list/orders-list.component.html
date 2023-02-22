@@ -10,8 +10,8 @@
   <mat-selection-list #orders [multiple]="false" [(ngModel)]="selectedOrder" (ngModelChange)="onNgModelChange($event)">
       <mat-list-option *ngFor="let order of ordersList" [value]="order">
         <div fxLayout="row">
-          <div fxFlex="30" class="order-status" [ngClass]="{'accepted-order': order.orderType === 'ACCEPTED','rejected-order': order.orderType === 'REJECTED','waiting-order': order.orderType === 'WAITING'}">
-            {{order.orderType | titlecase}}
+          <div fxFlex="30" class="order-status" [ngClass]="{'accepted-order': order.status === 'ACCEPTED','rejected-order': order.status === 'REJECTED','waiting-order': order.status === 'WAITING'}">
+            {{order.status | titlecase}}
           </div>
           <div fxFlex="55">
             
@@ -66,6 +66,11 @@
           <span *ngIf="this.selectedOrder[0].deliveryDate >= currentdate">
             <mat-icon class="waiting">access_time</mat-icon>
           </span>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="summary" *ngIf="selectedOrder[0].deliveryDate != null">
+            <div class ="totalPrice-text"> delivery will be at: </div>
+            <div class ="totalPrice-text">{{selectedOrder[0]?.deliveryDate | date : 'medium'}}</div>
+          </div>
+
         </mat-card-content>
 
       </mat-card>
@@ -75,6 +80,7 @@
         </mat-card-title>
         <mat-divider></mat-divider>
         <mat-card-content>
+          
           <table mat-table [dataSource]="selectedOrder[0].products" class="mat-elevation">
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Product Name </th>

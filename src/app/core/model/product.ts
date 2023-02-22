@@ -8,4 +8,5 @@ export class Product{
   description: string;
   fileName: string;
   category: Category;
+  category_id: number; 
 }

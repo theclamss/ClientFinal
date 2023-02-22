@@ -27,8 +27,11 @@ export class ProductDialogComponent implements OnInit {
               private productService: ProductService, private formBuilder: FormBuilder) {
     this.product = data.product;
     this.category = data.category;
+    console.log(this.product)
   }
-
+  getCategories(): void{
+    this.categoryService.findAllCategories().subscribe(data => this.categories = data);
+  }
   ngOnInit(): void {
 
     this.getCategories();
@@ -37,51 +40,58 @@ export class ProductDialogComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
-      fileName: new FormControl('', [Validators.required])
+      fileName: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required])
     });
     this.productForm.get('name').setValue(this.product?.name);
     this.productForm.get('description').setValue(this.product?.description);
     this.productForm.get('price').setValue(this.product?.price);
     this.productForm.get('fileName').setValue(this.product?.fileName);
     this.productForm.get('category').setValue(this.product?.category);
-  
+
+    
     
   }
-  getCategories(): void{
-    this.categoryService.findAllCategories().subscribe(data => this.categories = data);
-  }
+  
 
 
   close(): void{
-    this.dialogRef.close();
     console.log("test" + this.category);
+    console.log(this.product)
+    this.dialogRef.close();
+
   }
   selectFile(file): void{
     this.currentFileUpload = file.target.files[0];
   }
 
   save() : void{
+    
+    this.getCategories();
     const formData = new FormData();
     const user = this.tokenStorageService.getUser();
     const product: any = {
       id: this.product?.id,
       name : this.productForm.controls.name.value,
       description: this.productForm.controls.description.value,
-      category: this.product?.category || this?.category,
+      category:this.productForm.controls.category.value,
+      //category_id: this.productForm.controls.category.value.id, 
+     
       fileName: this.currentFileUpload?.name,
       price: this.productForm.controls.price.value,
     };
-
+  
     if (this.product != null && this.currentFileUpload == null){
       product.fileName = this.product.fileName;
     }
-
+      console.log(this.productForm.controls.category.value);
+    console.log(this.product?.category),
+    console.log(this.product?.name),
     formData.append('product', JSON.stringify(product));
 
     formData.append('user',JSON.stringify(user));
     
     
-
     if (this.currentFileUpload != null){
       formData.append('file', this.currentFileUpload, this.currentFileUpload.name);
     }

@@ -42,7 +42,7 @@ export class ProductsManagmentComponent implements OnInit{
   }
 
   getProducts(): void{
-    this.productService.findAllProductsByCategory(this.selectedCategory.name).subscribe(data => this.products = data);
+    this.productService.findAllProductsByCategory(this.selectedCategory?.name).subscribe(data => this.products = data);
   }
 
   getCategories(): void{

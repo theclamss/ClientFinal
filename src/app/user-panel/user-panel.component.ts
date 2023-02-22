@@ -32,12 +32,11 @@ export class UserPanelComponent implements OnInit {
     this.getSortOrders();
 
 
-
   }
-  onNgModelChange(event){
-     console.log(event);
+  onNgModelChange(selectedOrder: any){
+    console.log(selectedOrder[0].status);
 
-    this.selectedOrder = event;
+    this.selectedOrder = selectedOrder;
     
     console.log(this.selectedOrder[0].totalPrice);
      //this.OrderProductsService.findOrdersProducts(this.selectedOrder[0].id).subscribe(result => this.products = result);

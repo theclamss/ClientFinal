@@ -18,6 +18,7 @@
           <mat-error *ngIf="alreadyExists == true">Name is required</mat-error>
 
         </mat-form-field>
+        
         <mat-form-field class="description-text">
           <mat-label>Description</mat-label>
           <textarea #description maxlength="500" autocomplete="off"
@@ -50,6 +51,14 @@
               value="{{currentFileUpload?.name}}"
               readonly
             />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="category" placeholder="Category">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="productForm.get('category').hasError('required')">Category is required</mat-error>
           </mat-form-field>
         </div>
       </div>
