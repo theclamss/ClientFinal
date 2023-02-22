@@ -45,7 +45,7 @@
        <p>Prix total: {{selectedOrder[0].totalPrice}}</p>
 
       
-      <div *ngIf="this.selectedOrder[0].status  === 'WAITING'  || this.selectedOrder[0].status  === 'ACCEPTED' " >
+      <div *ngIf="this.selectedOrder[0].status  === 'REJECTED'||this.selectedOrder[0].status  === 'WAITING'  || this.selectedOrder[0].status  === 'ACCEPTED' " >
   
   
           <mat-card class="mat-elevation-z4 order-info">

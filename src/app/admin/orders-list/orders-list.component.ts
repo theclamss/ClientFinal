@@ -56,9 +56,11 @@ export class OrdersListComponent implements OnInit {
   }
   reject(order: Order): void{
     order.totalPrice = 0;
+    order.status="REJECTED";
     this.orderService.updateOrder(order.id, order);
 
-    order.status="REJECTED";
+    
+  
   }
 
     getSortOrders(){
