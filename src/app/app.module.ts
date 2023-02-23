@@ -48,6 +48,16 @@ import { PrestaComponent } from './presta/presta.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { SideBarNav2Component } from './side-bar-presta/side-bar-presta.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { MatNativeDateModule } from '@angular/material/core';
+
+import { MatCalendar } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
+
 
 
 const appearance: MatFormFieldDefaultOptions = {
@@ -77,10 +87,15 @@ const appearance: MatFormFieldDefaultOptions = {
     ProductDetailsComponent,
     PrestaComponent,
     WelcomeComponent,
-    SideBarNav2Component
+    SideBarNav2Component,
+    CalendarComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
+ 
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCardModule,
     SocialLoginModule,
     BrowserModule,
     BrowserAnimationsModule,

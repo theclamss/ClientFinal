@@ -8,6 +8,10 @@ import {TokenStorageService} from '../../core/services/tokenService/token-storag
 import {User} from '../../core/model/user';
 import {Order} from '../../core/model/order';
 import {Address} from '../../core/model/address';
+import { CalendarComponent } from '../../calendar/calendar.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-order',
@@ -15,6 +19,9 @@ import {Address} from '../../core/model/address';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  dateChoisie: Date;
+
+  Results:Moment;
 
   cartData: Cart = {
     orderProducts: [],
@@ -38,12 +45,12 @@ export class CheckoutComponent implements OnInit {
 
   order: Order;
 
-  constructor(private cartService: CartService, private router: Router, private orderService: OrderService, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService) {
+  constructor(private dialog: MatDialog,private cartService: CartService, private router: Router, private orderService: OrderService, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService) {
   }
 
   ngOnInit(): void {
     this.cartService.cartDataChanged$.subscribe(cart => this.cartData = cart);
-    this.order = new Order(this.cartData.totalPrice, this.cartData.orderProducts, this.user.id);
+    
   }
 
   placeOrder(){
@@ -51,6 +58,33 @@ export class CheckoutComponent implements OnInit {
     data.append('order', JSON.stringify(this.order));
     this.orderService.placeOrder(data);
     this.cartService.clearCart();
+    
     this.router.navigateByUrl("/home/menu");
+  }
+
+
+  Choosedelivery(){
+
+    const dialogRef = this.dialog.open(CalendarComponent , {
+      width: '600px',
+      
+    });
+
+    dialogRef.afterClosed().subscribe((result: Date) => {
+        
+        console.log(result instanceof Date);
+        
+
+        
+        
+        this.dateChoisie = result;
+
+        this.order = new Order(this.cartData.totalPrice, this.cartData.orderProducts, this.user.id,this.dateChoisie);
+        //this.dateChoisie=result.toDate();
+
+      
+    });
+    
+    
   }
 }

@@ -1,0 +1,9 @@
+
+    <h2>Choisir une date</h2>
+    <mat-calendar [startAt]="dateDepart" [selected]="dateChoisie" 
+    (selectedChange)="choisirDate($event)" [dateClass]="getJourClass.bind(this)">
+  </mat-calendar>
+    <div class="dialog-buttons">
+        <button mat-raised-button color="primary" (click)="fermerDialog()">Annuler</button>
+      </div>
+  

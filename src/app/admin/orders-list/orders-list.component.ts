@@ -77,11 +77,14 @@ export class OrdersListComponent implements OnInit {
 
     
    this.currentdate=new Date().getDate();
-    
+
+
+  
+      
     console.log("date de livraison" +this.selectedOrder[0].deliveryDate);
     console.log("date mnt" +new Date().getMilliseconds());
 
-
+   
     console.log(this.userOfOrder.email);
     
    }
