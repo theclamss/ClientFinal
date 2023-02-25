@@ -1,16 +1,17 @@
 <div class="content">
   <mat-card>
     <mat-card-content>
-      <div class="label">Checkout</div>
+      <div class="label">Vérifier</div>
       <div class="empty-cart" *ngIf="cartData.orderProducts.length === 0">
-        <div>Your cart is empty. To add some products click here:
-          <button mat-raised-button routerLink="/home/menu">Add to cart</button>
+        <br>
+        <div ><h2> Votre panier est vide. Pour ajouter des produits cliquez ici =>  <button mat-raised-button routerLink="/home/menu">Ajouter au panier</button></h2>
+          
         </div>
       </div>
       <div *ngIf="cartData.orderProducts.length > 0">
       <table mat-table [dataSource]="cartData.orderProducts" class="mat-elevation">
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Product Name </th>
+          <th mat-header-cell *matHeaderCellDef> Nom du produit </th>
           <td mat-cell *matCellDef="let element"> <div class="large-text">{{element.product.name}}</div>
                 <span  class="ingredients-list" *ngFor="let ingredient of element.product.ingredients let last = last">
               &nbsp; {{ingredient.name}}{{last? '': ','}}
@@ -18,12 +19,12 @@
           </td>
         </ng-container>
         <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> Quantity</th>
+        <th mat-header-cell *matHeaderCellDef> Quantité</th>
           <td mat-cell *matCellDef="let element"><div class="large-text">{{element.quantity}}</div></td>
           </ng-container>
         <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Price </th>
-          <td mat-cell *matCellDef="let element"><div class="large-text">{{element.product.price | currency : 'USD'}}</div></td>
+          <th mat-header-cell *matHeaderCellDef> Prix </th>
+          <td mat-cell *matCellDef="let element"><div class="large-text">{{element.product.price | currency : 'EUR'}}</div></td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -31,12 +32,12 @@
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="row" fxLayoutAlign="space-between center" class="summary">
           <div class ="totalPrice-text">TOTAL: </div>
-          <div class ="totalPrice-text">{{cartData.totalPrice | currency : 'USD'}}</div>
+          <div class ="totalPrice-text">{{cartData.totalPrice | currency : 'EUR'}}</div>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center">
-          <button mat-raised-button (click)="placeOrder()">Place Order</button>
-          <button mat-raised-button routerLink="/home/menu">Edit cart</button>
-          <button mat-raised-button (click)="Choosedelivery()">Choose un delivery date</button>
+          <button mat-raised-button (click)="placeOrder()">Passer la commande </button>
+          <button mat-raised-button routerLink="/home/menu">Modifier le panier</button>
+          <button mat-raised-button (click)="Choosedelivery()">Choisissez une date de livraison</button>
 
         </div>
       </div>

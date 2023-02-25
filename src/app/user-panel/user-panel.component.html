@@ -1,7 +1,7 @@
 <div class="no-orders" *ngIf="orderList.length === 0">
   <mat-card class="mat-elevation-z4">
     <mat-card-content>
-      <div class="large-text">No orders yet!</div>
+      <div class="large-text">Pas de commandes !</div>
     </mat-card-content>
   </mat-card>
 </div>
@@ -16,18 +16,27 @@
   
   
     <mat-selection-list #orders [multiple]="false" [(ngModel)]="selectedOrder" (ngModelChange)="onNgModelChange(selectedOrder)">
+      <mat-list-option disabled>
+        <div fxLayout="row" class="header-row" >
+          <div fxFlex="30" class="header-col" fxLayoutAlign="center center">Statut</div>
+          <div fxFlex="50" class="header-col" fxLayoutAlign="center center">Date de la commande</div>
+          <div fxFlex="15" class="header-col" fxLayoutAlign="center center">Détaile</div>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-option>
       <mat-list-option *ngFor="let order of orderList" [value]="order">
+       
         <div fxLayout="row">
           <div fxFlex="30" class="order-status" [ngClass]="{'accepted-order': order.status === 'ACCEPTED','rejected-order': order.status === 'REJECTED','waiting-order': order.status === 'WAITING'}">
             {{order.status | titlecase}}
           </div>
    
     
-          <div fxFlex="50">
+          <div fxFlex="50" class="order-status">
   
             {{order.date | date:'dd-MM-yyyy, HH:mm'}}
           </div>
-          <div fxFlex="15"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></div>
+          <div fxFlex="15" class="order-status"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></div>
         </div>
        
         <mat-divider></mat-divider>
@@ -41,8 +50,6 @@
     <div *ngIf="orders.selectedOptions.selected[0]?.value.order !== null">
 
 
-      <p>ID de la commande: {{selectedOrder[0].id}}</p>
-       <p>Prix total: {{selectedOrder[0].totalPrice}}</p>
 
       
       <div *ngIf="this.selectedOrder[0].status  === 'REJECTED'||this.selectedOrder[0].status  === 'WAITING'  || this.selectedOrder[0].status  === 'ACCEPTED' " >
@@ -50,18 +57,18 @@
   
           <mat-card class="mat-elevation-z4 order-info">
             <mat-card-title>
-              Order information
+                            Informations sur la commande          
             </mat-card-title>
             <mat-divider></mat-divider>
             <mat-card-content>
               <div fxLayout="row" fxLayoutAlign="space-between center" class="summary" *ngIf="selectedOrder[0].deliveryDate != null">
-                <div class ="totalPrice-text">Your delivery will be at: </div>
+                <div class ="totalPrice-text">  Votre livraison se fera à : </div>
                 <div class ="totalPrice-text">{{selectedOrder[0]?.deliveryDate | date : 'medium'}}</div>
               </div>
   
               <table mat-table [dataSource]="selectedOrder[0].products" class="mat-elevation">
                 <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef> Product Name </th>
+                  <th mat-header-cell *matHeaderCellDef> Nom du produit</th>
                   <td mat-cell *matCellDef="let element"> <div class="large-text">{{element.product.name}}</div>
                     <span  class="ingredients-list" *ngFor="let ingredient of element.product.ingredients let last = last">
                 &nbsp; {{ingredient.name}}{{last? '': ','}}
@@ -69,12 +76,12 @@
                   </td>
                 </ng-container>
                 <ng-container matColumnDef="quantity">
-                  <th mat-header-cell *matHeaderCellDef> Quantity</th>
+                  <th mat-header-cell *matHeaderCellDef> Quantité</th>
                   <td mat-cell *matCellDef="let element"><div class="large-text">{{element.quantity}}</div></td>
                 </ng-container>
                 <ng-container matColumnDef="price">
-                  <th mat-header-cell *matHeaderCellDef> Price </th>
-                  <td mat-cell *matCellDef="let element"><div class="large-text">{{element.product.price | currency : 'USD'}}</div></td>
+                  <th mat-header-cell *matHeaderCellDef> Prix </th>
+                  <td mat-cell *matCellDef="let element"><div class="large-text">{{element.product.price | currency : 'EUR'}}</div></td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -82,7 +89,7 @@
   
               <div fxLayout="row" fxLayoutAlign="space-between center" class="summary">
                 <div class ="totalPrice-text">TOTAL: </div>
-                <div class ="totalPrice-text">{{selectedOrder[0].totalPrice | currency : 'USD'}}</div>
+                <div class ="totalPrice-text">{{selectedOrder[0].totalPrice | currency : 'EUR'}}</div>
               </div>
   
             </mat-card-content>

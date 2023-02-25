@@ -3,6 +3,8 @@
     <mat-calendar [startAt]="dateDepart" [selected]="dateChoisie" 
     (selectedChange)="choisirDate($event)" [dateClass]="getJourClass.bind(this)">
   </mat-calendar>
+  <br>
+  <br>
     <div class="dialog-buttons">
         <button mat-raised-button color="primary" (click)="fermerDialog()">Annuler</button>
       </div>

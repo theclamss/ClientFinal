@@ -37,6 +37,7 @@ export class ToolbarComponent implements OnInit {
       
       console.log(this.roles);
       this.email = user.email;
+      
     }
   }
 

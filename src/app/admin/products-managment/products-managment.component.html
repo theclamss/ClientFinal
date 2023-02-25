@@ -1,8 +1,8 @@
 <div class="content">
-  <h2>Products list</h2>
+  <h2> Liste de produits</h2>
 
   <mat-form-field>
-    <mat-label>Choose a category</mat-label>
+    <mat-label>Choisissez une catégorie</mat-label>
     <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)" >
       <mat-option *ngFor="let category of categories" [value]="category">
         {{category.name}}
@@ -15,7 +15,7 @@
   <div *ngIf="selectedCategory == null">
     <mat-card>
       <mat-card-content>
-        <h1 style="text-align: center">No any products on the list. Please choose category of products.</h1>
+        <h1 style="text-align: center">Aucun produit sur la liste. Veuillez choisir la catégorie de produits.</h1>
       </mat-card-content>
     </mat-card>
   </div>
@@ -25,13 +25,13 @@
         <mat-table matSort [dataSource]="products">
 
           <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
             <mat-cell *matCellDef="let row"><div class="large-text"> {{row.name}}</div> </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
-            <mat-cell *matCellDef="let row"> <div class="large-text">{{row.price | currency : 'USD'}} </div></mat-cell>
+            <mat-header-cell *matHeaderCellDef>Prix</mat-header-cell>
+            <mat-cell *matCellDef="let row"> <div class="large-text">{{row.price | currency : 'EUR'}} </div></mat-cell>
           </ng-container>
 
           <ng container matColumnDef="actions">

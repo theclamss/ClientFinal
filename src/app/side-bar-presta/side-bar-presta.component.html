@@ -13,17 +13,17 @@
         <mat-list-item >
           
           <mat-icon mat-list-icon routerLink="/home/myproducts" routerLinkActive="active-icon">auto_stories</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">My products</h4>
+          <h4 mat-line *ngIf="isExpanded">Mes produits</h4>
 
 
         </mat-list-item>
         <mat-list-item>
           <mat-icon mat-list-icon routerLink="products" routerLinkActive="active-icon">add_box</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Products</h4>
+          <h4 mat-line *ngIf="isExpanded">produits</h4>
         </mat-list-item>
         <mat-list-item>
           <mat-icon mat-list-icon routerLink="categories" routerLinkActive="active-icon">category</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Categories</h4>
+          <h4 mat-line *ngIf="isExpanded">Catégories</h4>
         </mat-list-item>
         <mat-list-item>
           <mat-icon mat-list-icon (click)="redirectToHomeMenu()">home</mat-icon>

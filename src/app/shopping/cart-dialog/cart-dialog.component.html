@@ -1,13 +1,13 @@
   <div class="cart-dialog">
     <mat-dialog-content>
       <mat-dialog-title color="primary">
-        <h1>Shopping cart</h1>
+        <h1>Panier</h1>
         <mat-divider></mat-divider>
       </mat-dialog-title>
       <div *ngIf="cart.orderProducts.length === 0" class="no-products-container">
           <div class="cart-info">
             <mat-icon class="cart-icon">shopping_cart</mat-icon>
-            <h1>Shopping cart is empty.</h1>
+            <h1> Le panier d'achat est vide.</h1>
           </div>
       </div>
       <div class="cart-items">
@@ -17,7 +17,7 @@
             {{ item.product.name }}
           </div>
           <div class ="large-text">
-            {{ item.product.price | currency : 'USD' }}
+            {{ item.product.price | currency : 'EUR' }}
           </div>
           <div fxLayout="row" fxLayoutAlign="space-around center" >
             <button class="quantity-button" (click)="decrease(item)"><mat-icon>remove_circle</mat-icon></button>
@@ -28,19 +28,19 @@
         <mat-divider></mat-divider>
       </div>
       </div>
-      <button  mat-raised-button class="button" (click)="clearCart()"><mat-icon>remove_shopping_cart</mat-icon>Clear cart</button>
+      <button  mat-raised-button class="button" (click)="clearCart()"><mat-icon>remove_shopping_cart</mat-icon>Vider le panier</button>
 
     </mat-dialog-content>
 
     <div fxLayout="row" fxLayoutAlign="space-between center" class="summary">
       <div class ="totalPrice-text">TOTAL: </div>
-      <div class ="totalPrice-text">{{cart.totalPrice | currency : 'USD'}}</div>
+      <div class ="totalPrice-text">{{cart.totalPrice | currency : 'EUR'}}</div>
     </div>
 
     <mat-dialog-actions>
       <div fxLayout="row" fxLayoutAlign="end" class="cart-buttons-container">
-        <button mat-raised-button class="cart-button" (click)="closeDialog()"><div class="large-text">Continue shopping</div></button>
-        <button mat-raised-button class="cart-button" style="background-color: #448AFF" (click)="openCheckout()"><div class="large-text" style="color: white">Create Order</div></button>
+        <button mat-raised-button class="cart-button" (click)="closeDialog()"><div class="large-text">Continuer vos achats</div></button>
+        <button mat-raised-button class="cart-button" style="background-color: #448AFF" (click)="openCheckout()"><div class="large-text" style="color: white">Créer une commande</div></button>
       </div>
     </mat-dialog-actions>
   </div>

@@ -1,11 +1,12 @@
-<div class="welcome-container">
-    <div class="welcome-header">
-      <h1>Welcome to your Event Organizer</h1>
-      <p>Discover new events and plan your next one</p>
-      <button mat-raised-button routerLink="/home" class="get-started-btn">Get started</button>
+<div class="welcome-container" [@fadeAnimation]>
+  <div class="welcome-image" style="background-image: url('/assets/welcome-bg.png')">
+    <div class="welcome-header" [@slideUpAnimation]>
+      <h1><b>Bienvenue dans votre organisateur d'événements</b></h1>
+
+      <h2>Comment ça fonctionne ?</h2>
+      <p>Si c'est votre première visite, vous pouvez créer un compte pour accéder à tous nos produits nécessaires à l'organisation de votre événement. Après vous être connecté(e), vous pouvez sélectionner 
+        les produits souhaités, indiquer la quantité et la date de votre événement. Nous nous occupons du reste !  </p>
+      <button mat-raised-button routerLink="/home" class="get-started-btn">Commencer</button>
     </div>
-    <div class="welcome-image" style="background-image: url('/assets/welcome-bg.png')"></div>
-
-
-    
   </div>
+</div>

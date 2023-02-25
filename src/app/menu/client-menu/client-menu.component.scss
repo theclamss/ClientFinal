@@ -46,7 +46,7 @@
   line-height: 0;
 }
 .mat-button-toggle-checked.mat-button-toggle-appearance-standard{
-  background-color:  #44ff6d;
+  background-color:  #4460ff;
   margin-right: 1rem;
   color: white;
 }
@@ -79,6 +79,13 @@
   .add-button {
     justify-content: center;
     float: none;
+
+  }
+  .row {
+    flex-direction: column;
+  }
+  .col-md-12 {
+    width: 100%;
   }
   .mat-button-toggle{
     margin-bottom: 10px !important;
@@ -90,6 +97,7 @@
     height: 25vh;
   }
   .button{
+   
     padding: 0;
   }
   .actions-buttons{
@@ -106,10 +114,10 @@
   border-radius: 4px;
   margin-right: 1rem;
   background-color: transparent;
-  color: black;
+  color: #446dff;
   max-height: 40px;
-  border-left-color: #44ff6d !important;
+  border-left-color: #446dff !important;
   border-left-width: medium !important;
   border-style: solid;
-  border-color: #76ff44;
+  border-color: #4486ff;
 }

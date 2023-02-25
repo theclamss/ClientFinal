@@ -1,12 +1,12 @@
 <div class="content">
-  <h2>Categories list</h2>
+  <h2>Liste de categories </h2>
 
   <mat-divider></mat-divider>
 
   <div *ngIf="categories == null">
     <mat-card>
       <mat-card-content>
-        <h1 style="text-align: center">No any categories. Please add some.</h1>
+        <h1 style="text-align: center">Il n'a y pas des categories, SVP ajouter.</h1>
       </mat-card-content>
     </mat-card>
   </div>
@@ -16,7 +16,7 @@
         <mat-table matSort [dataSource]="categories">
 
           <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
             <mat-cell *matCellDef="let row"><div class="large-text"> {{row.name}}</div> </mat-cell>
           </ng-container>
 
