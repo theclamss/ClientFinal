@@ -22,7 +22,7 @@
 
     <button mat-button *ngIf="isLoggedIn == true && roles[0] === 'ROLE_PRESTA'" [matMenuTriggerFor]="PrestaMenu" (click)="getRoute()"><h2 class="black-text">{{email}}</h2></button>
     <mat-menu #PrestaMenu="matMenu">
-      <button mat-menu-item routerLink="/home/userDashboard" *ngIf="routerUrl != '/home/userDashboard'"> panneau PRESTA </button>
+      <button mat-menu-item routerLink="/home/userDashboard" *ngIf="routerUrl != '/home/userDashboard'"> PRESTA Panel</button>
       <button mat-menu-item routerLink="/home/menu" *ngIf="routerUrl === '/home/userDashboard'">Menu</button>
       <button mat-menu-item (click)="logout()" routerLink="/menu">Se déconnecter
       </button>
