@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,Input} from '@angular/core';
 import {Product} from '../../core/model/product';
 import {ProductService} from '../../core/services/productService/product.service';
 import {CartService} from '../../core/services/cartService/cart.service';
@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 })
 
 export class ClientMenuComponent implements OnInit{
+
+  @Input() productName: string;
 
   mealType: string;
   dataSource: Product[] = [];
@@ -47,6 +49,14 @@ export class ClientMenuComponent implements OnInit{
   }
   getAllCategories(){
     this.categoryService.findAllCategories().subscribe(data => this.categories = data);
+    console.log('allCats');
+  }
+
+
+  public getProductByname(name:String){
+    
+
+    this.productService.findProductByName2(name).subscribe(z=>this.dataSource=z);
     console.log('allCats');
   }
 

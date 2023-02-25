@@ -17,6 +17,7 @@ export class ProductService {
   postProduct(product: FormData): Observable<any>{
     return this.http.post(URL + '', product);
   }
+  
   findAllProducts(): Observable<Product[]>{
       return this.http.get<Product[]>(URL);
     }
@@ -25,6 +26,10 @@ export class ProductService {
   }
   findProductByName(name): Observable<boolean> {
     return this.http.get<boolean>( URL + `?name=${name}`);
+  }
+
+  findProductByName2(name): Observable<Product[]> {
+    return this.http.get<Product[]>( URL +'/search/'+ `?name=${name}`);
   }
   findProductById(id): Observable<Product> {
     return this.http.get<Product>( URL + `/5?id=${id}`);

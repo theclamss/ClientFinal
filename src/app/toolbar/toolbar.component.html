@@ -2,6 +2,12 @@
   <mat-toolbar-row>
     <span class="spacer2" routerLink="/"><div class="logo"><img src="/assets/1.png"/></div></span>
     <span class="spacer"></span>
+
+   
+
+    <input type="text" name="text" class="input" placeholder="Type here..." [(ngModel)]="inputText" (input)="handleInput()">
+   
+
     <button mat-button  *ngIf="!isLoggedIn" routerLink="login"><div class="black-text">Login</div></button>
 
     <button mat-button *ngIf="isLoggedIn == true && roles[0] === 'ROLE_ADMIN'" [matMenuTriggerFor]="adminMenu" (click)="getRoute()"><h2 class="black-text">{{email}}</h2></button>

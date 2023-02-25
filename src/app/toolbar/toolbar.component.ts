@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import {TokenStorageService} from '../core/services/tokenService/token-storage.service';
 import {Router} from '@angular/router';
+import {ClientMenuComponent} from '../menu/client-menu/client-menu.component';
+
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit{
 
+  
+  
 
+  public inputText: string = '';
   public roles: string[];
   isLoggedIn = false;
   adminRole = false;
@@ -18,11 +23,12 @@ export class ToolbarComponent implements OnInit {
   email: string;
   routerUrl: string;
 
-  constructor(private tokenStorageService: TokenStorageService, private router: Router) {
+  constructor( private tokenStorageService: TokenStorageService, private router: Router) {
     this.getRoute();
   }
 
   ngOnInit(): void {
+    
     if (this.tokenStorageService.getToken() != null){
       this.isLoggedIn = true;
     }
@@ -38,7 +44,10 @@ export class ToolbarComponent implements OnInit {
       console.log(this.roles);
       this.email = user.email;
     }
+
+    
   }
+  
 
   logout(): void {
     this.tokenStorageService.logout();
@@ -49,5 +58,9 @@ export class ToolbarComponent implements OnInit {
     this.routerUrl = this.router.url;
 
   }
+  public handleInput(): void {
+    console.log("search: " + this.inputText);
+  }
+  
 
 }
