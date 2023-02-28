@@ -24,6 +24,7 @@ export class ProductDetailsComponent implements OnInit {
               private router: Router,
               public dialog: MatDialog) {
   }
+  //he
 
   ngOnInit(): void {
    
