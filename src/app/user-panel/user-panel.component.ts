@@ -39,10 +39,7 @@ export class UserPanelComponent implements OnInit {
     this.selectedOrder = selectedOrder;
     
     console.log(this.selectedOrder[0].totalPrice);
-     //this.OrderProductsService.findOrdersProducts(this.selectedOrder[0].id).subscribe(result => this.products = result);
-     //this.userService.getUserById(this.selectedOrder[0].userId).subscribe(result => this.user = result);
-     //this.user = this.userService
-
+  
      
 
     

@@ -3,7 +3,7 @@
     <mat-dialog-content>
 
       <mat-dialog-title color="primary">
-        <h1>Add category</h1>
+        <h1>Ajouter une categorie</h1>
       </mat-dialog-title>
       <mat-divider></mat-divider>
       <div fxLayout="column">
@@ -14,15 +14,15 @@
             matInput
             formControlName="name"
             placeholder="Category name">
-          <mat-error *ngIf="categoryForm.get('name').hasError('required')">Name is required</mat-error>
-          <mat-error *ngIf="alreadyExists == true">Name is required</mat-error>
+          <mat-error *ngIf="categoryForm.get('name').hasError('required')">Le nom est requis</mat-error>
+          <mat-error *ngIf="alreadyExists == true">Le nom est requis</mat-error>
         </mat-form-field>
         </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button mat-raised-button (click)="close()">Close</button>
-      <button mat-raised-button class="saveButton" (click)="save()">Save</button>
+      <button mat-raised-button (click)="close()">Fermez</button>
+      <button mat-raised-button class="saveButton" (click)="save()">Enregistrez</button>
     </mat-dialog-actions>
   </div>
 </form>

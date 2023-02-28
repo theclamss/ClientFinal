@@ -84,7 +84,7 @@ export class ProductDialogComponent implements OnInit {
     if (this.product != null && this.currentFileUpload == null){
       product.fileName = this.product.fileName;
     }
-      console.log(this.productForm.controls.category.value);
+      console.log(this.category);
     console.log(this.product?.category),
     console.log(this.product?.name),
     formData.append('product', JSON.stringify(product));
