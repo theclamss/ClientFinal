@@ -56,6 +56,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatCalendar } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
 
@@ -92,6 +93,7 @@ const appearance: MatFormFieldDefaultOptions = {
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
+    NgxStarRatingModule ,
  
     MatNativeDateModule,
     MatDatepickerModule,

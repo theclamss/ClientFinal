@@ -6,6 +6,8 @@ import {Product} from '../../core/model/product';
 import {MatDialog} from '@angular/material/dialog';
 import { Location } from '@angular/common';
 
+import { NgxStarRatingModule } from 'ngx-star-rating';
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',

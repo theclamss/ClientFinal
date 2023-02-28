@@ -24,15 +24,28 @@
           <h1 class="mat-display-2"> {{product?.name}} </h1>
         </div>
         <div gdArea="sidebar">
-          <img class="productImage" src="https://recipebook50.s3.eu-central-1.amazonaws.com/{{product?.fileName}}"/>
+          <img class="productImage" src="/assets/{{product.name}}.jpg"/>
         </div>
         <div  gdArea="content">
           <h1 class="mat-display-1">Déscription</h1>
           <p class="body-1">{{product?.description}}</p>
         </div>
 
+        <div >
+          <ngx-star-rating [rating]="product.rating" [readOnly]="true" [starSize]="30" class="star-rating"></ngx-star-rating>
+          
+        
+        </div>
+
+
+        
+        
 
       </div>
+     
     </div>
   </div>
+  
 </div>
+
+

@@ -25,6 +25,7 @@
     "@angular/router": "~12.2.17",
     "angularx-social-login": "^4.1.0",
     "moment": "^2.29.4",
+    "ngx-star-rating": "^2.1.0",
     "postcss": "^8.4.21",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

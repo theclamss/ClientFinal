@@ -9,4 +9,5 @@ export class Product{
   fileName: string;
   category: Category;
   category_id: number; 
+  rating:number;
 }

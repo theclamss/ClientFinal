@@ -22,3 +22,35 @@
   color: #9965f4;
 }
 
+.star-rating {
+  display: inline-flex;
+  font-size: 0;
+  
+}
+
+.star-rating.star-rating-readonly .star-rating-star {
+  cursor: default;
+}
+
+.star-rating-star {
+  font-size: 30px;
+  color:black;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.star-rating-star.full {
+  color: #288202;
+}
+
+
+.star-rating-star::before {
+  content: "\2605";
+  font-size: 30px;
+  color: #ddd;
+}
+
+.star-rating-star.full::before {
+  color: #ff0707;
+}
+
