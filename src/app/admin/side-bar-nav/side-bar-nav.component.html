@@ -12,15 +12,15 @@
       
       <mat-list-item >
         <mat-icon mat-list-icon routerLink="orders" routerLinkActive="active-icon">receipt_long</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Orders</h4>
+        <h4 mat-line *ngIf="isExpanded">Commandes</h4>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon routerLink="products" routerLinkActive="active-icon">add_box</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Products</h4>
+        <h4 mat-line *ngIf="isExpanded">Produits</h4>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon routerLink="categories" routerLinkActive="active-icon">category</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Categories</h4>
+        <h4 mat-line *ngIf="isExpanded">Catégories</h4>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon (click)="redirectToHomeMenu()">home</mat-icon>

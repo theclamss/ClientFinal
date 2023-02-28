@@ -3,7 +3,7 @@
     <mat-dialog-content>
 
       <mat-dialog-title color="primary">
-        <h1>Add product</h1>
+        <h1>Ajouter un produit </h1>
       </mat-dialog-title>
       <mat-divider></mat-divider>
       <div fxLayout="column">
@@ -14,8 +14,8 @@
             matInput
             formControlName="name"
             placeholder="Product name">
-          <mat-error *ngIf="productForm.get('name').hasError('required')">Name is required</mat-error>
-          <mat-error *ngIf="alreadyExists == true">Name is required</mat-error>
+          <mat-error *ngIf="productForm.get('name').hasError('required')">  Le nom est requis</mat-error>
+          <mat-error *ngIf="alreadyExists == true"> Le nom est requis</mat-error>
 
         </mat-form-field>
         
@@ -24,7 +24,7 @@
           <textarea #description maxlength="500" autocomplete="off"
                     matInput formControlName="description"></textarea>
           <mat-hint align="end">{{description.value.length}} / 500</mat-hint>
-          <mat-error *ngIf="productForm.get('description').hasError('required')">Description is required</mat-error>
+          <mat-error *ngIf="productForm.get('description').hasError('required')">La description est requis</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input
@@ -33,7 +33,7 @@
             formControlName="price"
             placeholder="Set price"
             type="number">
-          <mat-error *ngIf="productForm.get('price').hasError('required')">Price is required</mat-error>
+          <mat-error *ngIf="productForm.get('price').hasError('required')">Le prix est requis</mat-error>
         </mat-form-field>
 
         <div class="uploadContainer">
@@ -58,15 +58,15 @@
                 {{ category.name }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="productForm.get('category').hasError('required')">Category is required</mat-error>
+            <mat-error *ngIf="productForm.get('category').hasError('required')"> La catégorie est requise</mat-error>
           </mat-form-field>
         </div>
       </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button mat-raised-button (click)="close()">Close</button>
-      <button mat-raised-button class="saveButton" (click)="save()">Save</button>
+      <button mat-raised-button (click)="close()">Fermez</button>
+      <button mat-raised-button class="saveButton" (click)="save()">sauvegarder</button>
     </mat-dialog-actions>
   </div>
 </form>
